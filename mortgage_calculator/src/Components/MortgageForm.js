@@ -4,35 +4,35 @@ function MortgageForm ({handleTotal}) {
     
     const [salary, setSalary] = useState("");
     const [partnerSalary, setPartnerSalary] = useState("");
-    const [maxPropertyValue, setMaxPropertyValue] = useState("");
+    //const [maxPropertyValue, setMaxPropertyValue] = useState("");
     
 
     const handleSalaryChange = (evt) => {
         setSalary(evt.target.value);
     }
 
-    const handlePartnerSalaryChange = (evt) => {
-       setPartnerSalary(evt.target.value);
+     const handlePartnerSalaryChange = (evt) => {
+      setPartnerSalary(evt.target.value);
     }
 
-    const handlePropertyValueChange = (evt) => {
-        setMaxPropertyValue(evt.target.value);
-    }
+    // const handlePropertyValueChange = (evt) => {
+    //     setMaxPropertyValue(evt.target.value);
+    // }
 
 
     const handleFormSubmit = (evt) => {
        evt.preventDefault();
        const salaryToSubmit = salary.trim();
-       const propertyValueToSubmit = maxPropertyValue.trim();
-       if(!salaryToSubmit || !propertyValueToSubmit){
+       //const propertyValueToSubmit = maxPropertyValue.trim();
+       if(!salaryToSubmit){
            return 
        }
        
        if (!partnerSalary){
-        handleTotal(salaryToSubmit*3);   
+        handleTotal(salary*3);   
        }
        else{    
-        const combinedSalary = salaryToSubmit + partnerSalary;
+        const combinedSalary = salary + partnerSalary;
         handleTotal(combinedSalary * 3)
        }
     }
@@ -55,13 +55,13 @@ function MortgageForm ({handleTotal}) {
     value={partnerSalary}
     onChange={handlePartnerSalaryChange}
     /> 
-   <input
+   {/* <input
    class="input"
     type="text"
     placeholder="Your max property value"
     value={maxPropertyValue}
     onChange={handlePropertyValueChange}
-    />
+    /> */}
    <input
    id="submitButton"
    type="submit"
